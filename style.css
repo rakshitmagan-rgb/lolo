@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+/* Theme Configuration */
+@theme inline {
+  --color-primary: var(--color-emerald-500);
+  --color-danger: var(--color-red-500);
+  --color-warning: var(--color-amber-500);
+  --color-info: var(--color-sky-500);
+}
+
+/* Base Styles */
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: var(--color-slate-950);
+    color: var(--color-slate-100);
+    overflow: hidden;
+  }
+
+  html, body, #app {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+/* Component Styles */
+@layer components {
+  .dashboard-card {
+    @apply bg-slate-900/50 border border-slate-800 rounded-xl p-4;
+  }
+
+  .stat-card {
+    @apply bg-slate-800/50 border border-slate-700/50 rounded-lg p-3 transition-all duration-300 hover:bg-slate-800/80 hover:border-slate-600;
+  }
+
+  .alert-card {
+    @apply p-3 rounded-lg border flex gap-3 transition-all duration-300;
+  }
+
+  .alert-card-info {
+    @apply bg-slate-800/50 border-slate-700/50;
+  }
+
+  .alert-card-warning {
+    @apply bg-amber-500/10 border-amber-500/30;
+  }
+
+  .alert-card-alert {
+    @apply bg-rose-500/10 border-rose-500/30;
+  }
+
+  .btn {
+    @apply px-4 py-2 rounded-lg font-semibold text-xs uppercase tracking-wider transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply bg-emerald-600 text-white hover:bg-emerald-700 active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply bg-slate-800 text-slate-300 hover:bg-slate-700 active:scale-95;
+  }
+
+  .btn-danger {
+    @apply bg-red-600 text-white hover:bg-red-700 active:scale-95;
+  }
+}
+
+/* Custom Utilities */
+@utility pulse-slow {
+  animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@utility animate-scan {
+  animation: scan 8s linear infinite;
+}
+
+@utility custom-scrollbar {
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--color-slate-900);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-slate-700);
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--color-slate-600);
+  }
+}
+
+/* Keyframe Animations */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes scan {
+  0% {
+    top: 0%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Leaflet Map Dark Theme Overrides */
+.leaflet-container {
+  background: var(--color-slate-950);
+  font-family: inherit;
+}
+
+.leaflet-popup-content-wrapper {
+  background: var(--color-slate-900);
+  color: var(--color-slate-100);
+  border: 1px solid var(--color-slate-700);
+}
+
+.leaflet-popup-tip {
+  background: var(--color-slate-900);
+}
+
+.leaflet-control-zoom a {
+  background: var(--color-slate-900) !important;
+  border: 1px solid var(--color-slate-700) !important;
+  color: var(--color-slate-200) !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background: var(--color-slate-800) !important;
+  color: var(--color-emerald-500) !important;
+}
+
+.leaflet-control-attribution {
+  background: rgba(15, 23, 42, 0.8) !important;
+  color: var(--color-slate-500) !important;
+  font-size: 9px !important;
+}
